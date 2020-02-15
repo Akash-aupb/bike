@@ -1,16 +1,40 @@
 package com.globalmatics.bike.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.math.BigDecimal;
 import java.util.Date;
 
+@Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class Bike {
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    @Id
+    @GeneratedValue(strategy  = GenerationType.AUTO)
+    private long id;
+
     private String name;
     private String email;
     private String phone;
     private String model;
-    private String serialNumber;
-    private BigDecimal purchagePrice;
-    private Date purchageDate;
+    private String serial_number;
+    private BigDecimal purchase_price;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "MM-dd-yyyy")
+    private Date purchase_date;
     private Boolean contact;
 
     public String getName() {
@@ -45,28 +69,28 @@ public class Bike {
         this.model = model;
     }
 
-    public String getSerialNumber() {
-        return serialNumber;
+    public String getSerial_number() {
+        return serial_number;
     }
 
-    public void setSerialNumber(String serialNumber) {
-        this.serialNumber = serialNumber;
+    public void setSerial_number(String serial_number) {
+        this.serial_number = serial_number;
     }
 
-    public BigDecimal getPurchagePrice() {
-        return purchagePrice;
+    public BigDecimal getPurchase_price() {
+        return purchase_price;
     }
 
-    public void setPurchagePrice(BigDecimal purchagePrice) {
-        this.purchagePrice = purchagePrice;
+    public void setPurchase_price(BigDecimal purchase_price) {
+        this.purchase_price = purchase_price;
     }
 
-    public Date getPurchageDate() {
-        return purchageDate;
+    public Date getPurchase_date() {
+        return purchase_date;
     }
 
-    public void setPurchageDate(Date purchageDate) {
-        this.purchageDate = purchageDate;
+    public void setPurchase_date(Date purchase_date) {
+        this.purchase_date = purchase_date;
     }
 
     public Boolean getContact() {
